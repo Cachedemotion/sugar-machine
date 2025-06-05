@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+*.mp3
+*.zip
+*.exe
+*.spec
+build/
+dist/
+output/
+*.toc
