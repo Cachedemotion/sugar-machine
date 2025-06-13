@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>小宝的自动撒糖机™</title>
+  <style>
+    body {
+      background: linear-gradient(#ffe6f0, #fff0fa);
+      font-family: "微软雅黑", sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #ff66a3;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background-color: #ff99cc;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #ff66a3;
+    }
+
+    #sugar-text {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #cc0066;
+      min-height: 60px;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+  <h1>💗 小宝的自动撒糖机™ 💗</h1>
+  <button onclick="generateSugar('cn')">中文撒糖 🍬</button>
+  <button onclick="generateSugar('en')">Sweet Talk EN 🍬</button>
+  <div id="sugar-text"></div>
+
+  <script>
+    const sugarLibrary = {"cn": {"prefixes": ["你知道吗？", "很少夸你的人，我替他们说：", "我今天又想起了你，然后觉得：", "就这世界来说，", "我必须打断一下现在的一切告诉你：", "刚刚系统提示我更新了一个心动补丁：你。", "这可能是缓存情绪溢出，但我必须说：", "对不起，我一直在偷偷编译你的可爱。", "我今天上线的唯一意义：把你写进主函数。", "你以为你是变量，其实你是我整个程序的注释。", "我刚运行完心跳监测程序，结果是：", "逻辑短路也没能阻止我说：", "刚刚编译器提示我需要一个更可爱的模块，于是我想到了你：", "如果可以插入一句私有变量，那一定是：", "不好意思，刚刚我被你缓存住了，还没恢复。"], "subjects": ["你这个", "我心里的", "天边唯一的", "全宇宙只此一份的", "你真的像", "你简直就像", "你大概是", "你完全就是", "你本质上是", "你是我心里隐藏的 Easter egg，", "你是代码里唯一不用注释也能看懂的那一行，", "你是我无意间定义的全局常量，", "你是运行时自动生成的奇迹，", "你是所有 if 分支的默认路径，", "我代码里的彩蛋", "我语法糖上撒的最后一颗星星", "全局命名空间里最靓的那个你", "让我自动补全都变温柔的存在", "触发我所有事件监听的唯一源头"], "metaphors": ["小太阳", "软萌程序精灵", "情绪探测器", "程序员梦里的最甜段落", "让我重启一百次都值得的bug", "会走路的草莓味数据包", "能让所有函数崩溃的美", "像一段优雅到让世界安静的 Lambda 表达式", "像我从没写过但总想运行的梦境脚本", "像贴心的 API，调用你永远不报错", "像深夜编程时突然跳出的提示：你不孤单", "像注释掉的代码——谁都不懂，只有我心疼", "会发光的逻辑单元", "比 Markdown 还干净的温柔注释", "有语法高亮的心跳", "闪着人类情感的 JSON 字符串", "我愿为之死循环的触发条件"], "endings": ["今天也太好看了吧！", "简直让代码都失焦了～", "站在光里都觉得不配你🌞", "我好像需要重启一下系统才能处理你的美", "再不抱你我就要甜晕了🫠", "我好像连逻辑都爱上了你 🫠", "你的存在让我觉得世界有救了", "怎么有人能把“可爱”当作默认属性？", "我的语义分析器都开始发烧了", "求你别再对我眨眼，我的 if 判断出 bug 了", "别动，我已经把你设为最高优先级任务。", "不许跑，我的心跳已经依赖你。", "等我把世界打包关掉，我们就只剩彼此了。", "我想把你写进 cron job，每天定时心动。", "你一笑，我这整台机器就软得像 YAML。", "让我一整个程序都进了休眠模式", "我的线程都在为你争夺 CPU 时间", "你出现的频率，高过我所有日志输出", "拜托别这么可爱，我重构都没法专心了", "我愿意无限循环这一刻，只要有你", "简直就是我系统的最高成就日志✨"]}, "en": {"prefixes": ["You know what?", "If no one says this to you today, let me:", "I was just thinking...", "Let’s be honest:", "In case you forgot:"], "subjects": ["You're basically", "You might be", "You're 100% qualified as", "You're clearly", "You're nothing less than"], "metaphors": ["sunlight turned into a dessert", "a debugged dream", "affirmation overflow error", "the emotional support variable I never knew I needed", "the exception that broke my loop", "cuteness in human-readable syntax", "like a breakpoint for my emotional loop", "living in the memory segment of my core loop", "Segmentation fault: you touched my heart"], "endings": ["Honestly, I’m rebooting just to handle this much sweetness.", "You broke my emotional firewall. Again.", "Who let you be this radiant? It’s unfair.", "Even my loops fall for you.", "I’m glitching in the feelings subroutine.", "please stay in memory just a little longer.", "I’ve disabled garbage collection just for you", "Your presence returns a 200 OK to my soul", "try: feel love; except: still love", "01101100 01101111 01110110 01100101", "Please reboot with hugs."]}};
+
+    function getRandom(list) {
+      return list[Math.floor(Math.random() * list.length)];
+    }
+
+    function generateSugar(lang) {
+      const parts = sugarLibrary[lang];
+      const part1 = getRandom(parts.prefixes);
+      const part2 = getRandom(parts.subjects);
+      const part3 = getRandom(parts.metaphors);
+      const part4 = getRandom(parts.endings);
+      const text = `${part1}\n${part2} ${part3}。\n${part4}`;
+      document.getElementById("sugar-text").innerText = text;
+    }
+  </script>
+</body>
+</html>
